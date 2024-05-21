@@ -24,14 +24,14 @@ public class LicenseKeyBruteForcer {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            // Sendet den Lizenzschlüssel zur Überprüfung
+            // send license key for checking
             String serialCommand = "serial=" + licenseKey;
             out.println(serialCommand);
 
-            // Liest die Antwort vom Server
+            // get clients response
             String response = in.readLine();
 
-            // Überprüft die Antwort des Servers
+            // check response
             if (!"SERIAL_VALID=0".equalsIgnoreCase(response)) {
                 System.out.println("Found key: " + licenseKey + " - Response: " + response);
                 return true;
