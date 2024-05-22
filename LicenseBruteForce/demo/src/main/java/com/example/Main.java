@@ -1,15 +1,17 @@
+package com.example;
+
 import java.io.*;
 import java.net.*;
 
-public class LicenseKeyBruteForcer {
+public class Main {
 
     public static void main(String[] args) {
         String host = "master.lab";
         int port = 54321;
 
         try {
-            for (int i = 0; i <= 99999999; i++) { // Absteigende Schleife von 99999999 bis 0
-                String licenseKey = String.format("%08d", i); // Generiert einen 8-stelligen Schlüssel mit führenden Nullen
+            for (int i = 0; i <= 99999999; i++) { 
+                String licenseKey = String.format("%08d", i); 
                 if (isLicenseKeyValid(host, port, licenseKey)) {
                     System.out.println("Found key: " + licenseKey);
                 }
@@ -33,7 +35,7 @@ public class LicenseKeyBruteForcer {
 
             // check response
             if (!"SERIAL_VALID=0".equalsIgnoreCase(response)) {
-                System.out.println("Found key: " + licenseKey + " - Response: " + response);
+                //System.out.println("Found key: " + licenseKey + " - Response: " + response);
                 return true;
             }
             return false;
